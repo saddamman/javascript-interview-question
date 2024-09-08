@@ -1,0 +1,47 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+
+  <body>
+    <h2>Closure</h2>
+    <div>
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+    function outest() {
+      var c = 12;
+      function outer(b) {
+        function inner() {
+          console.log(a, b, c); // try printing b and c  here
+        }
+        let a = 10; // let instead of var
+        return inner;
+      }
+      return outer;
+    }
+
+    // Passing argument here
+    var close = outest()("Hi Closures"); // this will give you outer function
+    close(); // this will give you inner function and equivalent
+
+    // print the value of i with out using let key word
+
+    for (let i = 0; i < 5; i++) {
+      (function (i) {
+        setTimeout(() => {
+          console.log(i);
+        }, 1000);
+      })(i);
+    }
+  </script>
+</html>

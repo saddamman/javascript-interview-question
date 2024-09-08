@@ -1,0 +1,46 @@
+<!DOCTYPE html />
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binary Search</title>
+</head>
+
+<body>
+  <h2>Binary Search</h2>
+</body>
+<script>
+  let searchval = 30;
+  const arrList = [3, 6, 8, 20, 30, 45, 67, 86, 97, 100];
+
+  function binarySearch(arr, searchKey) {
+    let low = 0;
+    let high = arr.length;
+    if (searchKey < arr[0] || searchKey > arr[arr.length - 1]) {
+      return -1
+    }
+    while (low <= high) {
+      let mid = Math.round((low + high) / 2);
+      if (searchKey < arr[mid]) {
+        high = mid - 1;
+      }
+      else if (searchKey > arr[mid]) {
+        low = mid + 1;
+      }
+      else {
+        return mid
+        break;
+      }
+    }
+    return -1
+
+  }
+
+  const result = binarySearch(arrList, searchval);
+  console.log(arrList[result] === searchval)
+
+
+</script>
+
+</html>

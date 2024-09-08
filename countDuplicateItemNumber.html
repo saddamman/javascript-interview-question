@@ -1,0 +1,25 @@
+<!DOCTYPE html />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>findRepeationChar</title>
+</head>
+
+<body>
+    <h2>Find Duplicate Item inside the Array.</h2>
+</body>
+<script>
+    let repeatChar = {};
+    function findRepeationChar(str) {
+
+        [...str].forEach((item, index, array) => {
+            repeatChar[item] = (repeatChar[item] || 0) + 1
+        })
+    }
+
+    findRepeationChar('saddam')
+</script>
+
+</html>

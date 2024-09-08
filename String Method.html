@@ -1,0 +1,41 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Method</title>
+  </head>
+
+  <body>
+    <h2>String Method</h2>
+  </body>
+  <script>
+    // CONVERT STRING IN TITLE CASE
+
+    // without using predefined method
+    function covnertTitleCase(str) {
+      str = str.split(" ");
+      let temStr = "";
+      for (let i = 0; i < str.length; i++) {
+        // console.log(str.length, i);
+        temStr +=
+          str[i].charAt(0).toUpperCase() +
+          str[i].substring(1) +
+          (i < str.length ? " " : "");
+      }
+      console.log(temStr);
+    }
+    // covnertTitleCase("i am developer");
+
+    // with predefined method
+
+    function convertTitleWithMethod(str) {
+      temStr = str.split(" ");
+      temStr = temStr
+        .map((item) => item.charAt(0).toUpperCase() + item.substring(1))
+        .join(" ");
+      console.log(temStr);
+    }
+    convertTitleWithMethod("i am developer");
+  </script>
+</html>

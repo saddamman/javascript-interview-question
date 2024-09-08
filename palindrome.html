@@ -1,0 +1,28 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>Palindrome Number</h2>
+  </body>
+  <script>
+    function isNumberPalindrome(num) {
+      let tempNum = num;
+      let lastNumber = "";
+      while (tempNum > 0) {
+        lastNumber += (tempNum % 10).toString();
+        tempNum = Math.floor(tempNum / 10);
+      }
+      if (Number(lastNumber) === num) {
+        console.log(`${num} is palindrome number`);
+      } else {
+        console.log(`${num} is palindrome not number`);
+      }
+    }
+    isNumberPalindrome(231);
+  </script>
+</html>

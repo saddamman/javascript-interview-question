@@ -1,0 +1,42 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Short Prime</title>
+  </head>
+
+  <body>
+    <h2>Prime</h2>
+    <div>
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+    const obj = [
+      { key: "sample 1", data: "data1" },
+      { key: "sample 2", data: "data2" },
+      { key: "sample 1", data: "data1" },
+      { key: "sample 3", data: "data3" },
+      { key: "sample 4", data: "data4" },
+      { key: "sample 1", data: "data1" },
+    ];
+    const output = {};
+    function filterObj(obj) {
+      obj.forEach((item) => {
+        if (output[item.key]) {
+          output[item.key].push(item);
+        } else {
+          output[item.key] = [item];
+        }
+      });
+    }
+    filterObj(obj);
+    console.log(output);
+  </script>
+</html>

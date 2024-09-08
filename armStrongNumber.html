@@ -1,0 +1,28 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>armStrongNumber</h2>
+  </body>
+  <script>
+    function checkNumberARamsrong(num, p) {
+      let calculatedSum = 0;
+      let tempNum = num;
+      while (tempNum > 0) {
+        calculatedSum += Math.pow(tempNum % 10, p);
+        tempNum = Math.floor(tempNum / 10);
+      }
+      if (calculatedSum === num) {
+        console.log(`${num} is armStrongNumber`);
+      } else {
+        console.log(`${num} is not armStrongNumber`);
+      }
+    }
+    checkNumberARamsrong(48787, 3);
+  </script>
+</html>

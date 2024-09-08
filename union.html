@@ -1,0 +1,29 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>Union Number</h2>
+    
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+        function getUnionNumber(setOne, setTwo) {
+        	console.log(setOne.union(setTwo) );
+        // console.log(new Set([...setOne, ...setTwo])); 
+        }
+        let array1 = new Set([2, 4, 6, 8]);
+        let array2 = new Set([1, 4, 9]);
+        getUnionNumber(array1, array2)
+  </script>
+</html>

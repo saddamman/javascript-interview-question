@@ -1,0 +1,62 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Short Prime</title>
+  </head>
+
+  <body>
+    <h2>Prime</h2>
+    <div>
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+    // CHECK PRIME NUMBER IN GIVEN NUMBER
+
+    function shortPrime(num) {
+      for (let i = 1; i < num; i++) {
+        let isPrime = true;
+        for (let j = 2; j < i; j++) {
+          //   console.log(i, j, i % j);
+          if (i % j === 0) {
+            isPrime = false;
+            break;
+          }
+        }
+        if (isPrime && i !== 1) {
+          console.log(i, "____");
+        }
+      }
+    }
+    shortPrime(10);
+
+    // CHECK NUMBER IS PRIME OR NOT
+    function check_numberPrime(num) {
+      let isPrime = true;
+      if (num < 2) {
+        console.log(`${num} is not prime prime`);
+        return;
+      }
+      for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+      if (isPrime) {
+        console.log(`${num} is prime`);
+      } else {
+        console.log(`${num} is not prime prime`);
+      }
+    }
+
+    check_numberPrime(4); // 4 is not prime
+  </script>
+</html>

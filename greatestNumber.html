@@ -1,0 +1,26 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>greatestNumber</h2>
+  </body>
+  <script>
+    const array = [23, 343, 33, 22, 11, 2, 5, 2];
+    function greatestNumber(obj) {
+      let maxNum = array[0];
+      for (let i = 0; i < obj.length; i++) {
+        if (maxNum > obj[i]) {
+          maxNum = obj[i];
+        }
+      }
+      return maxNum;
+      // console.log(Math.max(...array));
+    }
+    console.log(greatestNumber(array, "banana"));
+  </script>
+</html>

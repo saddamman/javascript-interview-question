@@ -1,0 +1,48 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure</title>
+  </head>
+
+  <body>
+    <h2>Closure</h2>
+    <div>
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+    //     I             1
+    // V             5
+    // X             10
+    // L             50
+    // C             100
+    // D             500
+    // M             1000
+
+    const strs = ['flower', 'flow', 'flight'];
+
+    const findLongestPrefix = (strs) => {
+      // let smallestLength = Math.min(...strs.map((str) => str.length));
+      let smallestStr = strs.reduce((acc, curr) =>
+        acc.length < curr.length ? acc : curr
+      );
+      let prefix = '';
+      for (let i = 0; i < smallestStr.length; i++) {
+        for (let j = 1; j < strs.length; j++) {
+          if (strs[0][i] === strs[j][i]) {
+            prefix += strs[0][i];
+          }
+        }
+      }
+      console.log(prefix);
+    };
+    findLongestPrefix(strs);
+  </script>
+</html>

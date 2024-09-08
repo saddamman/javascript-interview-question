@@ -1,0 +1,49 @@
+<!DOCTYPE html />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currying in js</title>
+</head>
+
+<body>
+    <a href="https://www.scaler.com/topics/nodejs/currying-in-javascript/" target="_blank">CURRYING-IN-JAVASCRIPT</a>
+    Open Link to Learn more.</h2>
+
+    <h3>Basic and Adavance currying.</h3>
+    </div>
+</body>
+<script>
+    //  Basic currying
+    const currying = (a, b, c) => (b) => (c) => { return a + b + c }
+    // console.log(currying('hello ')('saddam ')('How are you?'));
+
+    const adv_curry = (fn) => {
+        return curried = (...args) => {
+            if (fn.length !== args.length) {
+                return curried.bind(null, ...args)
+            }
+            return fn(...args);
+        };
+    }
+    const totalNum = (a, b, c, d, e, f) => {
+        return a + b + c + d + e + f
+    }
+    const curriedTotal = adv_curry(totalNum);
+    // console.log(curriedTotal(5)(15)(20)(20)(20)(20));
+    function curryingFun(a) {
+        return function (b) {
+            return a + b
+        }
+    }
+
+    const curResult = curryingFun(5)(9);
+    console.log(curResult)
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>Find Duplicate Item inside the Array.</h2>
+  </body>
+  <script>
+    //Predefined Method
+    function findDublicate(array) {
+      const dublicateItem = array.filter(
+        (item, index, arr) => arr.indexOf(item) !== index
+      );
+      console.log(dublicateItem);
+    }
+
+    findDublicate([1, 2, 4, 2, 5, 3, 5, 5]);
+
+    //Without Predefined Method
+    function findDublicatefor(array) {
+      let dublicateItmes = [];
+      for (let i = 0; i < array.length; i++) {
+        for (let j = i + 1; j < array.length; j++) {
+          if (array[i] === array[j] && !dublicateItmes.includes(array[i])) {
+            dublicateItmes.push(array[i]);
+          }
+        }
+      }
+      console.log(dublicateItmes);
+    }
+
+    findDublicatefor([1, 2, 4, 2, 5, 4, 3, 5, 6, 5]);
+
+    // REOMVE DUBLICATE NUMBER FROM ARRAY
+    console.log([...new Set(array)]);
+  </script>
+</html>

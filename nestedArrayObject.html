@@ -1,0 +1,42 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>Find Duplicate Item inside the Array.</h2>
+    <div>
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+    const data = {
+      level1: {
+        level2: {
+          level3: 'some data',
+        },
+      },
+    };
+
+    function checkItemExist(obj, source) {
+      for (const key in obj) {
+        if (obj[key] === source) {
+          return true;
+        }
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+          if (checkItemExist(obj[key], source)) return true;
+        }
+      }
+      return false;
+    }
+    console.log(checkItemExist(data, 'some data'));
+  </script>
+</html>

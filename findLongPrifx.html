@@ -1,0 +1,45 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Long Prefix</title>
+  </head>
+
+  <body>
+    <h2>Find Long Prefix</h2>
+  </body>
+  <script>
+    const arr = ["flower", "FLow", "fLte"];
+
+    // Find the smalles word in array
+    const smallestItem = arr.reduce((acc, curr) => {
+      if (typeof acc !== "string" || typeof curr !== "string") {
+        throw new Error("All items must be strings.");
+      }
+      return acc.length < curr.length ? acc : curr;
+    });
+
+    // Fint the longest prefix of array items
+    function findLongestCommonPrefix(arrayStr) {
+      if (arrayStr.length === 0) return "";
+      if (arrayStr.length === 1) return arrayStr[0];
+
+      for (let i = 0; i < arrayStr[0].length; i++) {
+        if (
+          !arrayStr.every(
+            (word) => word[i].toLowerCase() === arrayStr[0][i].toLowerCase()
+          )
+        ) {
+          // If not, return the substring from the start to the mismatch point
+          const prefix = arrayStr[0].substring(0, i);
+          return prefix ? prefix : "No common prefix found!";
+        }
+      }
+      // If no mismatches are found, return the entire first string
+      return arrayStr[0];
+    }
+
+    console.log(findLongestCommonPrefix(arr));
+  </script>
+</html>

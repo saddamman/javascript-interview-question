@@ -1,0 +1,30 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+
+  <body>
+    <h2>Dublicate number in array</h2>
+  </body>
+  <script>
+    const array = [1, 3, 5, 6, 8, 9, 10];
+    const maxVal = array[array.length - 1];
+
+    // FIND MISSING NUMBERS IN ARRAY
+    function findMissingNumber(array, maxVal) {
+      let missingNumer = [];
+      let tempArray = [...array];
+      for (let i = 0; i < maxVal; i++) {
+        if (tempArray[i] !== i + 1) {
+          tempArray.splice(i - 1, 0, i + 1);
+          missingNumer.push(i + 1);
+        }
+      }
+      console.log(missingNumer);
+    }
+    findMissingNumber(array, maxVal);
+  </script>
+</html>
