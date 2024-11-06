@@ -26,14 +26,14 @@
     // D             500
     // M             1000
 
-    const strs = ['flower', 'flow', 'flight'];
+    const strs = ["flower", "flow", "flight"];
 
     const findLongestPrefix = (strs) => {
       // let smallestLength = Math.min(...strs.map((str) => str.length));
       let smallestStr = strs.reduce((acc, curr) =>
         acc.length < curr.length ? acc : curr
       );
-      let prefix = '';
+      let prefix = "";
       for (let i = 0; i < smallestStr.length; i++) {
         for (let j = 1; j < strs.length; j++) {
           if (strs[0][i] === strs[j][i]) {
@@ -43,6 +43,29 @@
       }
       console.log(prefix);
     };
-    findLongestPrefix(strs);
+    // findLongestPrefix(strs);
+
+    // 27. Remove Element
+    function removeDublicteItem(numArr, val) {
+      for (let i = numArr.length - 1; i >= 0; i--) {
+        if (numArr[i] === val) {
+          numArr.splice(i, 1);
+        }
+      }
+      return numArr;
+    }
+    console.log(removeDublicteItem([3, 2, 2, 3], 3));
+
+    // 28. Find the Index of the First Occurrence in a String
+    // Input: haystack = "sadbutsad", needle = "sad"
+    function strStr(haystack, needle) {
+      for (let i = 0; i <= haystack.length - needle.length; i++) {
+        if (haystack.substring(i, i + needle.length) === needle) {
+          return i;
+        }
+      }
+    }
+
+    console.log(strStr("sadutsad", "sad"));
   </script>
 </html>

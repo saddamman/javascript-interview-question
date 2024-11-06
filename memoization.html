@@ -1,0 +1,65 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memoization</title>
+  </head>
+
+  <body>
+    <h2>Memoization</h2>
+  </body>
+  <script>
+    const initMain = async () => {
+      // const memoizedMutliplyBy10 = MutliplyBy10();
+      // const mememoizedAdd = memoize(add);
+      // console.log(mememoizedAdd(1, 2, 3));
+      // console.log(mememoizedAdd(1, 2, 3));
+      // console.log(mememoizedAdd(1, 2, 5));
+      const fabonacciMemoizedAdd = memoize(fabonacciAdd);
+      console.log(fabonacciMemoizedAdd(1, 2, 5));
+      console.log(fabonacciMemoizedAdd(1, 67, 5));
+      console.log(fabonacciMemoizedAdd(1, 67, 5));
+    };
+
+    document.addEventListener("offline", initMain);
+
+    const MutliplyBy10 = () => {
+      const cache = {};
+      return (num) => {
+        if (num in cache) {
+          console.log(cache, num);
+          return cache[num];
+        } else {
+          const result = num * 10;
+          cache[num] = result;
+          console.log("not", cache, num);
+
+          return result;
+        }
+      };
+    };
+    const add = (num1, num2, num3) => {
+      return num1 + num2 + num3;
+    };
+    const fabonacciAdd = (...arg) => {
+      return arg.reduce((acc, curr) => acc + curr, 0);
+    };
+
+    const memoize = (fn) => {
+      const cache = {};
+      return (...args) => {
+        if (args.toString() in cache) {
+          console.log(cache);
+          return cache[args.toString()];
+        } else {
+          const result = fn(...args);
+          cache[args.toString()] = result;
+          return result;
+        }
+      };
+    };
+
+    initMain();
+  </script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kth-largest-element</title>
+  </head>
+
+  <body>
+    <h2>Kth-largest-element</h2>
+  </body>
+  <script>
+    const array = [12, 34, 56, 2, 18, 21];
+    function KthlLrgestElement(arrInt, kth) {
+      if (!Array.isArray(arrInt) || arrInt.length == 0) {
+        return "Invalid Input: Please provide valid array";
+      }
+      if (kth < 0 || kth > arrInt.length) {
+        return "Invalid Kth Input: Please provide valid kth index";
+      }
+      for (let i = 0; i < arrInt.length; i++) {
+        for (let j = i + 1; j < arrInt.length; j++) {
+          if (arrInt[i] < arrInt[j]) {
+            let temVal = arrInt[i];
+            arrInt[i] = arrInt[j];
+            arrInt[j] = temVal;
+          }
+        }
+      }
+      console.log(arrInt);
+      return `${arrInt[kth - 1]} is Kth postion`;
+    }
+    const result = KthlLrgestElement(array, 3);
+    console.log(result);
+  </script>
+</html>

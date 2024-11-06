@@ -1,0 +1,32 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polyfills</title>
+  </head>
+
+  <body>
+    <h2>Polyfills</h2>
+  </body>
+  <script>
+    // Polyfills for ForEach method
+
+    Array.prototype.forEach = null;
+
+    // Polyfill for forEach
+    if (!Array.prototype.forEach) {
+      Array.prototype.forEach = function (cb) {
+        for (let [key, val] of this.entries()) {
+          //   console.log(key, value);
+          cb(val, key, this);
+        }
+      };
+    }
+
+    // Predefinde method in js
+    const arr = [1, 2, 3, 4, 5];
+
+    arr.forEach((item, index, arr) => console.log(item * 2, index, arr));
+  </script>
+</html>

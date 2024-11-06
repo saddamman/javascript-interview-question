@@ -1,0 +1,93 @@
+<!DOCTYPE html />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>26. Remove Duplicates from Sorted Array</title>
+  </head>
+
+  <body>
+    <h2>26. Remove Duplicates from Sorted Array [leetcode]</h2>
+    
+      <form onsubmit="onSubmit(event)">
+        <input type="text" id="addInput" />
+        <button>Add Item</button>
+      </form>
+
+      <ul class="itemList"></ul>
+    </div>
+  </body>
+  <script>
+
+    // Input [0,1,1,1,1,2,2,3,3,4]
+    // Output [0,1,1,1,1,2,2,3,3,4]
+      // executation
+      // let j = 1;
+      // for(let i = 0; i < numArr.length; i++){
+      //   if(numArr[i] !== numArr[k-1]){
+      //       numArr[k] = numArr[i];
+      //       k++ 
+      //   }
+  // Exe loop 1
+        // i = 0
+        // k = 2
+        // (0 !== 1 = true){
+        //  numArr = [0,1,1,1,1,2,2,3,3,4]
+        // k = 2
+        // }
+        // i = 1
+  // Exe loop 2
+          // i = 1
+        // (1 !== 1 = false){
+        //  numArr = [0,1,1,1,1,2,2,3,3,4]
+        // k = 2
+        // }
+        // i = 2
+  // Exe loop 3
+      // i = 2
+        // (1 !== 1 = false){
+        //  numArr = [0,1,1,1,1,2,2,3,3,4]
+        // k = 2
+        // }
+        // i = 3
+
+    // Exe loop 4
+      // i = 3
+      // numArr[3] = 1
+      // numArr[1] = 1
+        // (1 !== 1 = false){
+        //  numArr = [0,1,1,1,1,2,2,3,3,4]
+        // k = 2
+        // }
+        // i = 4
+  // Exe loop 4
+      // i = 4
+      // numArr[4] = 1
+      // numArr[1] = 1
+        // (1 !== 1 = false){
+        //  numArr = [0,1,1,1,1,2,2,3,3,4]
+        // k = 2
+        // }
+        // i = 5
+  // Exe loop 5
+        // i = 5
+        // numArr[5] = 2
+        // numArr[1] = 1
+        // (2 !== 1 = true){
+        // numArr[k] =  numArr[i]   
+        
+        //  numArr = [0,1,1,1,1,2,2,3,3,4]
+        // k = 2
+        // }
+        // i = 5
+
+
+
+    // }
+      
+      
+
+
+
+  </script>
+</html>

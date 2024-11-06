@@ -1,0 +1,241 @@
+<!DOCTYPE html />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+        html {
+            box-sizing: border-box;
+        }
+
+        body {
+            font: normal 14px/1.2 "Roboto", sans-serif, Arial, sans-serif;
+            margin: 0;
+            color: #333333;
+            background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
+            background: linear-gradient(to right, #182848, #4b6cb7);
+        }
+
+        .todo-container {
+            text-align: center;
+            width: clamp(200px, 400px, 400px);
+            margin: 0 auto;
+        }
+
+        .todo-container__box {
+            background-color: #ffffff;
+            margin: 40px auto 0;
+            padding: 20px;
+        }
+
+        .todo-container__box h3 {
+            margin: 0 0 10px;
+            color: #182848;
+            text-align: left;
+        }
+
+        .add-input-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .add-input-row input[type="text"] {
+            border-radius: 4px;
+            flex: 1 0 auto;
+            height: 34px;
+            padding: 10px;
+            color: #333333;
+            border: 1px solid #959da5;
+        }
+
+        .add-input-row input[type="text"]::placeholder {
+            color: #959da5;
+        }
+
+        .add-button {
+            border-radius: 4px;
+            height: 34px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            background-color: #4b6cb7;
+            color: #ffffff;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .todo-lists {
+            margin: 30px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .todo-lists>*+* {
+            margin-top: 10px;
+        }
+
+        .todo-lists li {
+            background: #ffffff;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px;
+            border-radius: 4px;
+            gap: 5px;
+        }
+
+        .todo-lists li .todo-lists__content {
+            font-size: 14px;
+            flex: 1 0 auto;
+            align-content: center;
+            min-height: 30px;
+            text-align: left;
+        }
+
+        .todo-lists li .todo-lists__content input[type="text"] {
+            font-size: 14px;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-bottom: 1px solid #959da5;
+        }
+
+
+
+        .todo-lists li .control-button {
+            border: 0;
+            padding: 5px;
+            border-radius: 2px;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 300;
+            cursor: pointer;
+            background-color: #4b6cb7;
+        }
+
+        .todo-lists li .edit--button {
+            background-color: #4b6cb7;
+        }
+
+        .todo-lists li .delete--button {
+            margin-left: 4px;
+            background-color: rgb(209, 17, 14);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="todo-container">
+        <div class="todo-container__box">
+            <h3><span>✔</span> &nbsp; To-Do List</h3>
+            <form class="add-input-row" onsubmit="addItem(event)">
+                <input type="text" placeholder="Add Item...." id="addItem__input" />
+                <button type="submit" class="add-button">Add</button>
+            </form>
+        </div>
+        <ul class="todo-lists">
+            3
+        </ul>
+    </section>
+</body>
+<script>
+
+    const addItemInput = document.querySelector("#addItem__input");
+    const todoLists = document.querySelector(".todo-lists");
+
+    // let flag = false;
+
+    function init() {
+        generateListHTML();
+        // flag = true;
+    }
+    document.addEventListener("DOMContentLoaded", init());
+
+    function getSaveData() {
+        return JSON.parse(localStorage.getItem("list")) || [];
+    }
+
+    // Generate To-Do List HTML
+    function generateListHTML(newText) {
+        const savedData = getSaveData();
+
+        if (!newText) {
+            todoLists.innerHTML = savedData.map(createListItem).join("");
+
+        } else {
+            let itemId = (savedData[savedData.length - 1]?.id ?? 0) + 1;
+            const itemObj = { text: newText, id: itemId };
+
+            if (!savedData.some((item) => item.text === newText)) {
+                savedData.push(itemObj);
+                localStorage.setItem("list", JSON.stringify(savedData));
+                todoLists.insertAdjacentHTML("beforeend", createListItem(itemObj));
+            } else {
+                alert("Item already added! Please try another one.");
+            }
+
+        }
+    }
+
+    // ** Highlighted Optimized Function **
+    function createListItem(item) {
+        console.log(item)
+        return `<li data-id="${item.id}">
+            <div class="todo-lists__content">${item.text}</div>
+            <div class="control-buttons">
+                <button type="button" class="control-button edit--button" onclick="editList(${item.id})">Edit</button>
+                <button type="button" class="control-button delete--button" onclick="deleteList(${item.id})">Delete</button>
+            </div>
+        </li>`;
+    }
+
+
+    function addItem(event) {
+        event.preventDefault();
+        const text = addItemInput.value.trim();
+        if (text) generateListHTML(text);
+        addItemInput.value = ""; // Clear input after adding
+    }
+
+    // Edit Item
+    function editList(itemId) {
+        const savedData = getSaveData();
+        const todoElement = document.querySelector(`li[data-id="${itemId}"] .todo-lists__content`);
+        const editButton = document.querySelector(`li[data-id="${itemId}"] .edit--button`);
+        const editItem = savedData.find((item) => item.id === itemId);
+
+        if (editButton.textContent === "Edit") {
+            editButton.textContent = "Update";
+            todoElement.innerHTML = `<input type="text" value="${editItem.text}">`;
+        } else {
+            const updatedText = document.querySelector(`li[data-id="${itemId}"] input`).value;
+            editButton.textContent = "Edit";
+            todoElement.textContent = updatedText;
+
+            // ** Updated Saved Data with Edited Item **
+            const updatedData = savedData.map((item) => item.id === itemId ? { ...item, text: updatedText } : item);
+            localStorage.setItem("list", JSON.stringify(updatedData));
+        }
+    }
+
+
+    // Delete Item
+    function deleteList(itemId) {
+        document.querySelector(`li[data-id="${itemId}"]`).remove();
+
+        const updatedData = getSaveData().filter((item) => item.id !== itemId);
+        localStorage.setItem("list", JSON.stringify(updatedData));
+    }
+
+</script>
+
+</html>

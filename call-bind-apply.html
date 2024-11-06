@@ -1,31 +1,36 @@
 <!DOCTYPE html />
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Call Bind Apply</title>
-  </head>
 
-  <body>
-    <h2>Call Bind Apply</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Call Bind Apply</title>
+</head>
 
-    </div>
-  </body>
-  <script>
-        const person = {
-            firstName: "Jhon",
-            lastName: "Doe",
-            address: 'R1-Noth America',
-            getFullName(){
-                console.log(this)
-                return this.firstName+" "+this.lastName
-            }
-        }
+<body>
+  <h2>Call Bind Apply</h2>
 
-        const person2 = {
-            name: ''
-        }
-        console.log(person.getFullName())
-        console.log(person.getFullName.call( "Raju", "Rastogi"))
-  </script>
+  </div>
+</body>
+<script>
+
+
+
+  const person = {
+    firstName: "Jhon",
+    lastName: "Doe",
+    address: 'R1-Noth America',
+    getFullName() {
+      console.log(this)
+      return this.firstName + " " + this.lastName
+    }
+  }
+
+  const person2 = {
+    name: ''
+  }
+  console.log(person.getFullName())
+  console.log(person.getFullName.call("Raju", "Rastogi"))
+</script>
+
 </html>

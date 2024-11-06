@@ -1,0 +1,61 @@
+<!DOCTYPE html />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event-Bubling-Capturing</title>
+    <style>
+        .grand-parent {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+        }
+
+        .parent {
+            border: 1px solid green;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+
+        .child {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Binary Search</h2>
+    <div class="grand-parent">
+        Grand Parent
+        <div class="parent">
+            Parent
+            <div class="child">
+                Child
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const grand_parent_ele = document.querySelector('.grand-parent');
+    const parent_ele = document.querySelector('.parent');
+    const child_ele = document.querySelector('.child');
+
+
+    child_ele.addEventListener('click', function (event) {
+        event.stopPropagation();
+        alert("Child")
+    })
+
+    parent_ele.addEventListener('click', function (event) {
+        alert("Parent")
+    })
+
+    grand_parent_ele.addEventListener('click', function (event) {
+        // event.stopPropagation();
+        alert("Grand Parent")
+    })
+</script>
+
+</html>
