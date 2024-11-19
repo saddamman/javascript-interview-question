@@ -95,10 +95,14 @@
 
         .todo-lists li .todo-lists__content {
             font-size: 14px;
-            flex: 1 0 auto;
+            flex: 1 0;
             align-content: center;
             min-height: 30px;
             text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: normal;
+            white-space: nowrap;
         }
 
         .todo-lists li .todo-lists__content input[type="text"] {
@@ -180,7 +184,7 @@
                 localStorage.setItem("list", JSON.stringify(savedData));
                 todoLists.insertAdjacentHTML("beforeend", createListItem(itemObj));
             } else {
-                alert("Item already added! Please try another one.");
+                alert("Item already added! Please try others. 😆");
             }
 
         }
@@ -188,7 +192,6 @@
 
     // ** Highlighted Optimized Function **
     function createListItem(item) {
-        console.log(item)
         return `<li data-id="${item.id}">
             <div class="todo-lists__content">${item.text}</div>
             <div class="control-buttons">
@@ -218,6 +221,10 @@
             todoElement.innerHTML = `<input type="text" value="${editItem.text}">`;
         } else {
             const updatedText = document.querySelector(`li[data-id="${itemId}"] input`).value;
+            if (updatedText === '') {
+                alert("You can't left empty, 😆😆");
+                return
+            }
             editButton.textContent = "Edit";
             todoElement.textContent = updatedText;
 

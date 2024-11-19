@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Filter</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./assets/css/select-dropdown.css" />
+    <link rel="stylesheet" defer href="./assets/css/product-filter.css" />
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/select-dropdown.js"></script>
+    <script src="./assets/js/product-filter.js"></script>
+    <script src="./assets/js/global.js"></script>
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="navbar navbar-expand-sm bg-white shadow-sm py-3">
+            <div class="container">
+                <a class="navbar-brand" href="#"><strong>LOGO</strong></a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" aria-current="page">Home <span
+                                    class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="d-flex col-md-6 my-2 my-lg-0">
+                        <input class="form-control me-sm-2 text-truncate" id="header-search-input" type="text"
+                            placeholder="Search products name here..." />
+                        <button class="btn btn-dark my-2 my-sm-0 px-4" id="header-search-btn" type="submit">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <!-- Prodcut Start -->
+                <div class="row flex-nowrap py-3 mt-4">
+                    <div class="col col-auto">
+                        <h3>Products</h3>
+                    </div>
+
+                    <div class="col">
+                        <div class="select-dropdown ms-auto" id="filter-dropdown">
+                            <button class="btn text-bg-dark select-dropdown__btn">
+                                <span>All</span>
+                                <i class="fa-solid fa-angle-down arrow"></i>
+                            </button>
+                            <ul class="select-dropdown__menu dp-one">
+                                <li>All</li>
+                                <li>Topwear</li>
+                                <li>Bottomwear</li>
+                                <li>Jacket</li>
+                                <li>Watch</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Prodcut End -->
+
+        <section>
+            <div class="container">
+                <ul id="product-list"
+                    class="list-unstyled m-0 p-0 row-gap-2 row row-cols-1 row-cols-sm-2 row-cols-md-4"></ul>
+            </div>
+        </section>
+    </main>
+</body>
+
+<script>
+    let lastScrollTop = 0;
+    const header = document.querySelector(".main-header"); // Change this to your header class or ID
+    const headerHeight = header.offsetHeight;
+
+    window.onscroll = function () {
+        let currentScroll = window.pageYOffset;
+        if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+
+        // Update the last scroll position
+    };
+</script>
+
+</html>

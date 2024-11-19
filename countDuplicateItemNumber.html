@@ -13,13 +13,13 @@
 <script>
     let repeatChar = {};
     function findRepeationChar(str) {
-
         [...str].forEach((item, index, array) => {
-            repeatChar[item] = (repeatChar[item] || 0) + 1
-        })
+            repeatChar[item] = (repeatChar[item] || 0) + 1;
+        });
+        console.log(repeatChar);
     }
 
-    findRepeationChar('saddam')
+    // findRepeationChar('saddam');
 </script>
 
 </html>

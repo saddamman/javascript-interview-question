@@ -1,47 +1,102 @@
 <!DOCTYPE html />
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Closure</title>
-  </head>
 
-  <body>
-    <h2>Closure</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Closure</title>
+</head>
+
+<body>
+  <h2>Closure</h2>
+  <div>
+    <form onsubmit="onSubmit(event)">
+      <input type="text" id="addInput" />
+      <button>Add Item</button>
+    </form>
+
+    <ul class="itemList"></ul>
+
     <div>
-      <form onsubmit="onSubmit(event)">
-        <input type="text" id="addInput" />
-        <button>Add Item</button>
-      </form>
-
-      <ul class="itemList"></ul>
+      <button>decrement</button>
+      <span id="count_box">0</span>
+      <button id="increament-button">increament</button>
     </div>
-  </body>
-  <script>
-    function outest() {
-      var c = 12;
-      function outer(b) {
-        function inner() {
-          console.log(a, b, c); // try printing b and c  here
-        }
-        let a = 10; // let instead of var
-        return inner;
+  </div>
+</body>
+<script>
+
+  const count_element = document.querySelector('#count_box')
+  const increament_button = document.querySelector('#increament-button')
+  function increment(param) {
+    let count = 0;
+    return () => count++
+  }
+  const result = increment();
+
+  increament_button.onclick = function () {
+    count_element.textContent = result('inc')
+  }
+
+  increament_button.onclick = function () {
+    count_element.textContent = result('dec')
+  }
+
+  function outset() {
+    var c = 12;
+    let a = 10;
+    function outer(b) {
+      function inner() {
+        console.log(a, b, c)
       }
-      return outer;
+      return inner;
     }
+    return outer;
+  }
+  let a = 100;
 
-    // Passing argument here
-    var close = outest()("Hi Closures"); // this will give you outer function
-    close(); // this will give you inner function and equivalent
+  const outerResult = outset()("Hi closure!");
+  console.log(outerResult())
 
-    // print the value of i with out using let key word
 
-    for (let i = 0; i < 5; i++) {
-      (function (i) {
-        setTimeout(() => {
-          console.log(i);
-        }, 1000);
-      })(i);
+
+
+
+  function outest() {
+    var c = 12;
+    function outer(b) {
+      function inner() {
+        console.log(a, b, c); // try printing b and c  here
+      }
+      let a = 10; // let instead of var
+      return inner;
     }
-  </script>
+    return outer;
+  }
+
+  // Passing argument here
+  var close = outest()("Hi Closures"); // this will give you outer function
+  // close(); // this will give you inner function and equivalent
+
+
+
+
+
+  //** print the value of i with out using let key word*
+
+  // for (let i = 0; i < 5; i++) {
+  //   (function (i) {
+  //     setTimeout(() => {
+  //       console.log(i);
+  //     }, 1000);
+  //   })(i);
+  // }
+
+
+
+
+
+
+</script>
+
 </html>
